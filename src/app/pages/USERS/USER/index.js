@@ -7,7 +7,7 @@ export default function USER() {
   console.log(clickedUser)
   return (
     <GENERALPAGECONTAINER>
-
+{clickedUser.name}
     </GENERALPAGECONTAINER>
   )
 }

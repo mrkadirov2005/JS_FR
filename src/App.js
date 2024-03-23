@@ -26,12 +26,9 @@ import TODOS from './app/pages/TODOS';
 import Photos from './app/pages/PHOTOS';
 import PHOTO_PAGE from './app/pages/PHOTOS/PHOTO';
 import NOTFOUND from './app/pages/NOTFOUND';
-<<<<<<< HEAD
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LAYOUT from './app/LAYOUT';
-=======
 
->>>>>>> 57b25648ba3798e36f63f4c35677f9e2475ef7b3
 
 const Wrapper=styled.main` 
 background: ${(props)=>props.theme=='true'?'darkblue':"grey"};
@@ -54,30 +51,19 @@ function App() {
 
 
   return (
-<<<<<<< HEAD
-    
-   <Wrapper>
-    <BrowserRouter>
-        <Routes>
-            <Route element={<LAYOUT/>}>
-                <Route path='/home' element={<HOME/>}></Route>
-=======
+  
   <Wrapper>
         <BrowserRouter>
         <Routes>
             <Route element={<LAYOUT/>}>
                 <Route path={'/home'} element={<HOME/>}></Route>
->>>>>>> 57b25648ba3798e36f63f4c35677f9e2475ef7b3
                 <Route path='/users' element={<USERS/>}></Route>
                 <Route path='/user' element={<USER/>}></Route>
                 <Route path='/todo' element={<TODO/>}></Route>
                 <Route path='/todos' element={<TODOS/>}></Route>
                 <Route path='/photos' element={<Photos/>}></Route>
                 <Route path='/photo' element={<PHOTO_PAGE/>}></Route>
-<<<<<<< HEAD
                 {/* <Route path='/posts' element={<Posts/>}></Route> */}
-=======
->>>>>>> 57b25648ba3798e36f63f4c35677f9e2475ef7b3
                 <Route path='*' element={<NOTFOUND/>}></Route>
             </Route>
         </Routes>
