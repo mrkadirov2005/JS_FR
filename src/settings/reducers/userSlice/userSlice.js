@@ -4,7 +4,8 @@ import { getUserById } from "./userThunks/userThunk";
 const initialState={
     user:[],
     isLoading:false,
-    status:'fulfilled' | 'rejected' | 'pending'
+    status:'fulfilled' | 'rejected' | 'pending',
+    auth:false
 }
 export const userSlice=createSlice({
     name:'user',
@@ -12,6 +13,9 @@ export const userSlice=createSlice({
     reducers:{
         setUser:(state,action)=>{
             state.user=action.payload
+        },
+        authUser:(state,action)=>{
+            state.auth=true
         }
     },
     extraReducers(builder){
@@ -23,5 +27,5 @@ builder
 })
     }
 })
-export const {setUser}=userSlice.actions
+export const {setUser,authUser}=userSlice.actions
 export default userSlice.reducer

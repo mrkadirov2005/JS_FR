@@ -9,7 +9,11 @@ const initialState={
 export const photoSlice=createSlice({
     name:'photo',
     initialState,
-    reducers:{},
+    reducers:{
+        setPhoto:(state,action)=>{
+            state.photo=action.payload
+        }
+    },
     extraReducers(builder){
 builder
 .addCase(getPhotoById.fulfilled,(state,action)=>{
@@ -30,4 +34,5 @@ builder
 
     }
 })
+export const {setPhoto}= photoSlice.actions
 export default photoSlice.reducer
