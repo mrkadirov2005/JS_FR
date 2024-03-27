@@ -9,7 +9,7 @@ export default function Header() {
         <LOGO>Muzaffar Blog</LOGO>
         <NAVBAR>
             <LIST_ROUTING link="home" text="home" type="text"/>
-            {/* <LIST_ROUTING link="posts" text="posts" type="text"/> */}
+            <LIST_ROUTING link="posts" text="posts" type="text"/>
             {/* <LIST_ROUTING link="post" text="post" type="text"/> */}
             <LIST_ROUTING link="users" text="users" type="text"/>
             <LIST_ROUTING link="photos" text="photos" type="text"/>

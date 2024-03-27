@@ -9,7 +9,11 @@ const initialState={
 export const postSlice=createSlice({
     name:'post',
     initialState,
-    reducers:{},
+    reducers:{
+        setPost:(state,action)=>{
+            state.post=action.payload
+        }
+    },
     extraReducers(builder){
 builder
 .addCase(getPostById.fulfilled,(state,action)=>{
@@ -27,7 +31,7 @@ builder
     state.status='pending'
     state.post=[]
 })
-
     }
 })
+export const {setPost}=postSlice.actions
 export default postSlice.reducer

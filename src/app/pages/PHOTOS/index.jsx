@@ -4,7 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPhoto } from '../../../settings/reducers/photoSlice/photoSlice'
 import { useNavigate } from 'react-router-dom'
 import { authUser } from '../../../settings/reducers/userSlice/userSlice'
+import styled from 'styled-components'
 
+
+
+const OL=styled.ol`
+display: flex;
+flex-wrap: wrap;
+`
 export default function Photos() {
 
 
@@ -46,11 +53,11 @@ const getSinglePhoto=(e)=>{
   return (
     <GENERALPAGECONTAINER>
     
-      <ol>
+      <OL>
         {filteredArray.map(item=>
         <li  key={item.id}  ><img width='150px' height='200px'  id={item.id} onClick={(e)=>getSinglePhoto(e)} src={item.url}/></li>
         )}
-      </ol>
+      </OL>
     </GENERALPAGECONTAINER>
   )
 }

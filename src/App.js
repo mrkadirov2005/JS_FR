@@ -19,6 +19,8 @@ import TODOS from './app/pages/TODOS';
 import Photos from './app/pages/PHOTOS';
 import PHOTO_PAGE from './app/pages/PHOTOS/PHOTO';
 import NOTFOUND from './app/pages/NOTFOUND';
+import POSTS from './app/pages/POSTS';
+import POST from './app/pages/POSTS/POST';
 
 
 const Wrapper=styled.main` 
@@ -54,7 +56,8 @@ function App() {
                 <Route path='/todos' element={<TODOS/>}></Route>
                 <Route path='/photos' element={<Photos/>}></Route>
                 <Route path='/photo' element={<PHOTO_PAGE/>}></Route>
-                {/* <Route path='/posts' element={<Posts/>}></Route> */}
+                <Route path='/posts' element={<POSTS/>}></Route>
+                <Route path='/post' element={<POST/>}></Route>
                 <Route path='*' element={<NOTFOUND/>}></Route>
             </Route>
         </Routes>
