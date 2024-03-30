@@ -31,13 +31,7 @@ export default function POSTS() {
         "unauthorized use, \n \t please enter your name and email with slash between"
       );
 // ozim ochirib qoydim
-      if (userANSWER.includes("/")) {
-        dispatch(authUser(userANSWER));
-        navigate("/post");
-      } else {
-        alert("you did not prove correct info");
-        getSinglePhoto();
-      }
+   
     }
   };
 

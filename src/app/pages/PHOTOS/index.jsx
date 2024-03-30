@@ -3,9 +3,8 @@ import { PhotosContainer,GENERALPAGECONTAINER } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPhoto } from '../../../settings/reducers/photoSlice/photoSlice'
 import { useNavigate } from 'react-router-dom'
-import { authUser } from '../../../settings/reducers/userSlice/userSlice'
 import styled from 'styled-components'
-
+import { setErrorMS, setOn, setSigned } from '../../../settings/reducers/Auth/AuthSlice'
 
 
 const OL=styled.ol`
@@ -19,35 +18,60 @@ const dispatch=useDispatch()
 const navigate=useNavigate()
 
   const PHOTOS=useSelector((state)=>state.photos.photos)
-  const AUTHSTATUS=useSelector(state=>state.user.auth)
+  //get Auth from redux TK state
+  const Auth=useSelector(state=>state.auth)
+
   const filteredArray=[]
 PHOTOS.filter(item=>item.id<101?filteredArray.push(item):'')
-console.log('filtered',filteredArray)
 
+
+
+
+//create a function for getting single photo
 const getSinglePhoto=(e)=>{
-  if(AUTHSTATUS){
-    const ID=e.target.id
-    const selectedPhoto=PHOTOS.filter(item=>item.id==ID)
+
+  console.log('get single photo worked,',Auth.isSignedIn)
+  //check if the id exists
+
+  let ID=0;
+ let  selectedPhoto=0;
+ if( e.target.id){
+  //equilize id to ID variable
+    ID=e.target.id
+  //filter photo with the  same id using filter method
+   selectedPhoto=PHOTOS.filter(item=>item.id==ID)
+  }
+  
+  //check if the user is signedIn and LoggedIn
+  if( Auth.isLoggedIn && Auth.isSignedIn){
+    console.log("dispatched")
     dispatch(setPhoto(selectedPhoto))
-    navigate('/photo')
-  }else{
-    const userANSWER=prompt('unauthorized use, \n \tplease enter your name and email with slash between')
-
-
-    if(userANSWER.includes('/'))
-    {
-      dispatch(authUser(userANSWER))
-      navigate('/photo')
-    }
-    else
-    {
-      alert('you did not prove correct info')
-      getSinglePhoto()
-    }
-
+     navigate('/photo')
 
   }
- 
+  //check if the user is logged but not signed
+  else if(Auth.isLoggedIn && !Auth.isSignedIn){
+    console.log(" isSignedIn false")
+     dispatch(setErrorMS("Please sign in!"))
+     dispatch(setOn("Please sign in!"))
+    }
+ //check if the user is signed but not loggedIn
+  else if(!Auth.isLoggedIn && Auth.isSignedIn){
+    //set error message 
+    dispatch(setErrorMS("Please log in!"))
+    dispatch(setOn())
+    
+  }
+  //check if no login and no signin
+  else if(!Auth.isLoggedIn && Auth.isSignedIn){
+    //set error message
+    dispatch(setErrorMS("plase login first and sign in to continue!"))
+    dispatch(setOn())
+    
+  }
+
+  
+
 }
 
   return (

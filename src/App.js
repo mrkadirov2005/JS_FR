@@ -21,6 +21,7 @@ import PHOTO_PAGE from './app/pages/PHOTOS/PHOTO';
 import NOTFOUND from './app/pages/NOTFOUND';
 import POSTS from './app/pages/POSTS';
 import POST from './app/pages/POSTS/POST';
+import RegisterPage from './app/pages/register/page';
 
 
 const Wrapper=styled.main` 
@@ -58,6 +59,7 @@ function App() {
                 <Route path='/photo' element={<PHOTO_PAGE/>}></Route>
                 <Route path='/posts' element={<POSTS/>}></Route>
                 <Route path='/post' element={<POST/>}></Route>
+                <Route path='/register' element={<RegisterPage/>}></Route>
                 <Route path='*' element={<NOTFOUND/>}></Route>
             </Route>
         </Routes>
