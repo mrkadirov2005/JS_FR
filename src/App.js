@@ -1,6 +1,5 @@
 import './App.css';
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { setInfo } from './settings/reducers/Users/usersSlice';
+import {  useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { getUsersList } from './settings/reducers/Users/usersThunk/usersThunk';
 import { getUserById } from './settings/reducers/userSlice/userThunks/userThunk';
@@ -8,7 +7,6 @@ import { getPostsList } from './settings/reducers/postsSlice/postsThunk/postsThu
 import { getPostById } from './settings/reducers/postSlice/postThunk/postThunk';
 import { getPhotos } from './settings/reducers/photosSlice/photosThunk/photosThunk';
 import { getPhotoById } from './settings/reducers/photoSlice/photoThunk/photoThunk';
-import Header from './components/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LAYOUT from './app/LAYOUT';
 import HOME from './app/pages/HOME';
@@ -46,7 +44,7 @@ function App() {
 
   return (
   
-  <Wrapper>
+  <Wrapper >
         <BrowserRouter>
         <Routes>
             <Route element={<LAYOUT/>}>

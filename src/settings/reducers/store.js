@@ -7,10 +7,13 @@ import photosReducer from './photosSlice/photosSlice'
 import photoReducer from './photoSlice/photoSlice'
 import photoSlice from "./photoSlice/photoSlice";
 import authReducer from "./Auth/AuthSlice";
+// import  persistreducer
 import persistReducer from "redux-persist/es/persistReducer";
+// import storage from redux persist
 import storage from "redux-persist/lib/storage";
+//import persistStore
 import persistStore from "redux-persist/es/persistStore";
-
+//install redux-persist
 const persistConfig = {
     key: 'root',
     storage,

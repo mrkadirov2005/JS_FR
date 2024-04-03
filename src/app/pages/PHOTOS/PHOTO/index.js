@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { DETAILS } from '../../USERS/USER'
 
 export default function PHOTO_PAGE() {
-  const PHOTO=useSelector(state=>state.photo.photo)
+  const PHOTO=useSelector(state=>state.photo.photo[0])
   console.log(PHOTO)
   const objectKeys=Object.keys(PHOTO)
   // objectKeys=['albumId',' 'id','title','url' ]

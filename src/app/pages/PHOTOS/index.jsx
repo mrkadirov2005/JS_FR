@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPhoto } from '../../../settings/reducers/photoSlice/photoSlice'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { setErrorMS, setOn, setSigned } from '../../../settings/reducers/Auth/AuthSlice'
+import { setErrorMS, setOnRegister, setSigned } from '../../../settings/reducers/Auth/AuthSlice'
 
 
 const OL=styled.ol`
@@ -53,20 +53,21 @@ const getSinglePhoto=(e)=>{
   else if(Auth.isLoggedIn && !Auth.isSignedIn){
     console.log(" isSignedIn false")
      dispatch(setErrorMS("Please sign in!"))
-     dispatch(setOn("Please sign in!"))
+     dispatch(setOnRegister("Please sign in!"))
     }
  //check if the user is signed but not loggedIn
   else if(!Auth.isLoggedIn && Auth.isSignedIn){
     //set error message 
     dispatch(setErrorMS("Please log in!"))
-    dispatch(setOn())
+    console.log("login",Auth.isLoggedIn,"signIn",Auth.isSignedIn)
+    dispatch(setOnRegister())
     
   }
   //check if no login and no signin
-  else if(!Auth.isLoggedIn && Auth.isSignedIn){
+  else if(!Auth.isLoggedIn && !Auth.isSignedIn){
     //set error message
     dispatch(setErrorMS("plase login first and sign in to continue!"))
-    dispatch(setOn())
+    dispatch(setOnRegister())
     
   }
 

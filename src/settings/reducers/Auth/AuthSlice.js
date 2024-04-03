@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
+    //updated this part
     User:{
         firstname:"",
         lastname:"",
@@ -9,29 +10,36 @@ const initialState={
 
     },
     isSignedIn:false,
-    isLoggedIn:true,
+    isLoggedIn:false,
     status:'fulfilled' | 'rejected' | 'pending',
-    on:false
+    on:true
 }
 export const AUTHslice=createSlice({
     name:'photo',
     initialState,
     reducers:{
-        setSigned:(state,action)=>{
+        setSigned:(state)=>{
             state.isSignedIn=true
         },
-        setIsloggedIn:(state,action)=>{
+        setIsloggedIn:(state)=>{
         state.isLoggedIn=true
 
         },
         setErrorMS:(state,action)=>{
             state.errorMS=action.payload
         },
-        setOn:(state,action)=>{
-            state.on=!state.on
+        setOnRegister:(state)=>{
+            state.on=true
+        },
+        setOffRegister:(state)=>{
+            state.on=false
+        },
+        setUserDetails:(state,action)=>{
+            const payload=action.payload
+            state.User={...state.User,...payload}
         }
     },
 
 })
-export const {setIsloggedIn,setSigned,setErrorMS,setOn}= AUTHslice.actions
+export const {setIsloggedIn,setSigned,setErrorMS,setOnRegister,setOffRegister,setUserDetails}= AUTHslice.actions
 export default AUTHslice.reducer
